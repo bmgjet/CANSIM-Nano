@@ -15,6 +15,7 @@ byte MODE = 0;
 bool IsSweep = true;
 byte sweep = 0;
 
+
 //Adjustable values
 byte Load = 10;
 byte TPS = 15;
@@ -24,26 +25,30 @@ int ECT = 80;
 int IAT = 30;
 byte MAP = 99;
 int RPM = 2000;
+int MAF = 50;
 byte VSS = 50;
 byte FP = 10;
 
 void setup() {
   Serial.begin(115200);
   Serial.setTimeout(50);
-  Serial.println("HTS");
+    Serial.println(("HTS CAN SIM 01"));
   if (CAN.begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ) == CAN_OK)
   {
-    Serial.println("HTS CAN SIM 01");
     CAN.setMode(MCP_NORMAL);
+    pinMode(CAN0_INT, INPUT);
   }
   else
   {
-    Serial.println("Failed To setup HTS CAN SIM 01");
+    Serial.println("Setup Failed");
+    ;
   }
-  pinMode(CAN0_INT, INPUT);
 }
 
 void loop() {
   DOCAN();
+  if (Serial)
+  {
   DOSERIAL();
+  }
 }

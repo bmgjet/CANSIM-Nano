@@ -7,7 +7,10 @@ void DOCAN()
     PID = buf[2];
     if (MODE == 1)
     {
-    ProcessMode1(PID);
+    if (ProcessMode1(PID))
+    {
+            CAN.sendMsgBuf(0x7E8, 0, 8, OBDIImsg);
+    }
     }
     else if (MODE == 3) 
     {
@@ -15,7 +18,7 @@ void DOCAN()
     }
     else if (MODE == 4) 
     {
-    //ProcessMode4();
+    ProcessMode4();
     }
     else if (MODE == 9) 
     {
