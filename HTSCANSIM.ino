@@ -17,16 +17,16 @@ byte sweep = 0;
 
 
 //Adjustable values
-byte Load = 10;
+byte Load = 5;
 byte TPS = 15;
 int TA = 10;
 float O2 = 1;
-int ECT = 80;
-int IAT = 30;
-byte MAP = 99;
-int RPM = 2000;
-int MAF = 50;
-byte VSS = 50;
+int ECT = 0;
+int IAT = 0;
+byte MAP = 0;
+int RPM = 1000;
+int MAF = 10;
+byte VSS = 25;
 byte FP = 10;
 
 void setup() {
